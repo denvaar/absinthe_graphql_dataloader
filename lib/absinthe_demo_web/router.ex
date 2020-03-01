@@ -19,8 +19,17 @@ defmodule AbsintheDemoWeb.Router do
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", AbsintheDemoWeb do
-  #   pipe_through :api
-  # end
+  # IMPORTANT!
+  #   Remove the alias to "AbsintheDemoWeb" on this scope block!
+  #   Otherwise you will get warnings and errors like:
+  #   "function AbsintheDemoWeb.Absinthe.Plug.init/1 is undefined"
+  scope "/api" do
+    pipe_through :api
+
+    forward "/graphiql", Absinthe.Plug.GraphiQL,
+      schema: AbsintheDemoWeb.GraphQL.Schema,
+      socket: AbsintheDemoWeb.UserSocket
+
+    forward "/", Absinthe.Plug, schema: AbsintheDemoWeb.GraphQL.Schema
+  end
 end
