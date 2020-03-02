@@ -45,7 +45,8 @@ defmodule AbsintheDemo.MixProject do
       {:plug_cowboy, "~> 2.0"},
       # Absinthe GraphQL stuff
       {:absinthe, "~> 1.4.16"},
-      {:absinthe_phoenix, "~> 1.4.4"}
+      {:absinthe_phoenix, "~> 1.4.4"},
+      {:dataloader, "~> 1.0.7"}
     ]
   end
 

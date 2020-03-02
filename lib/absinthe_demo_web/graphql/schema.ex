@@ -5,6 +5,18 @@ defmodule AbsintheDemoWeb.GraphQL.Schema do
 
   alias AbsintheDemoWeb.GraphQL.Resolvers
 
+  def context(ctx) do
+    loader =
+      Dataloader.new()
+      |> Dataloader.add_source(:blog_context, AbsintheDemo.DataSource.data())
+
+    Map.put(ctx, :loader, loader)
+  end
+
+  def plugins do
+    [Absinthe.Middleware.Dataloader] ++ Absinthe.Plugin.defaults()
+  end
+
   query do
     @desc "Get all posts"
     field :posts, list_of(:post) do
