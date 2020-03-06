@@ -12,21 +12,32 @@ defmodule AbsintheDemoWeb.GraphQL.Typedefs do
 
     field :author, :author, resolve: dataloader(:blog_context)
 
-    field :categories, list_of(:category), resolve: dataloader(:blog_context)
+    field :categories, list_of(:category) do
+      # post_id arg is implied
+      resolve(dataloader(:blog_context))
+    end
   end
 
   object :author do
     field :id, :id
     field :name, :string
-    field :profile_picture_link, :string
+    field :profile_pic_link, :string
 
-    field :posts, list_of(:post), resolve: dataloader(:blog_context)
+    field :posts, list_of(:post) do
+      # author_id arg is implied
+      arg(:categories, list_of(:string))
+      resolve(dataloader(:blog_context))
+    end
   end
 
   object :category do
     field :id, :id
     field :name, :string
 
-    field :posts, list_of(:post), resolve: dataloader(:blog_context)
+    field :posts, list_of(:post) do
+      arg(:categories, list_of(:string))
+      arg(:author_id, :id)
+      resolve(dataloader(:blog_context))
+    end
   end
 end

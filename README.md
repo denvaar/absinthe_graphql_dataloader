@@ -6,6 +6,7 @@ I've left a trail of [commit messages](https://github.com/denvaar/absinthe_graph
 - [Install Absinthe and configure it to work with Phoenix](https://github.com/denvaar/absinthe_graphql_dataloader/commit/51bd434b832091ca394ee2f977bdfe63b5e38ab6).
 - [Create a database schema with some basic relations; Hook it up to GraphQL schema](https://github.com/denvaar/absinthe_graphql_dataloader/commit/1b523986f5698eeb7c2dfa8dc12dd357e771d245). At this point we have a naive GraphQL schema. The resolvers cause some horrible database queries to happen.
 - [Set up Dataloader with Absinthe to improve performance of database queries](https://github.com/denvaar/absinthe_graphql_dataloader/commit/dbbaae5828ffc1a403ce0cea3bc901e048288e0f).
+- [Update schema and resolvers to handle arguments for filtering](https://github.com/denvaar/absinthe_graphql_dataloader/commit/dc96e01f5c1e685beaeef48291fc7d19d6e1c72e).
 
 ### Setup Instructions
 

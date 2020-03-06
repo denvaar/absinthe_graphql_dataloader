@@ -20,6 +20,8 @@ defmodule AbsintheDemoWeb.GraphQL.Schema do
   query do
     @desc "Get all posts"
     field :posts, list_of(:post) do
+      arg(:categories, list_of(:string))
+      arg(:title, :string)
       resolve(&Resolvers.list_posts/3)
     end
 
